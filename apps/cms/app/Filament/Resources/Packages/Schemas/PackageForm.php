@@ -58,7 +58,7 @@ class PackageForm
                             ->columnSpanFull(),
                         Textarea::make('scope')
                             ->label('Cakupan singkat')
-                            ->helperText('Paragraf di bawah butir, sebelum tautan Lihat cakupan.')
+                            ->helperText('Paragraf di bawah butir pada kartu.')
                             ->required()
                             ->rows(3)
                             ->maxLength(500)
@@ -118,7 +118,7 @@ class PackageForm
                         self::points('included', 'Butir termasuk'),
                     ]),
                 Section::make('Yang tidak termasuk')
-                    ->description('Butir yang sengaja berada di luar kartu ini.')
+                    ->description('Butir yang sengaja berada di luar cakupan paket ini.')
                     ->icon('heroicon-o-x-mark')
                     ->schema([
                         self::points('excluded', 'Butir di luar cakupan'),
