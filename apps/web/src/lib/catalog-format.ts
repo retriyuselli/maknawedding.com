@@ -33,9 +33,10 @@ export function titleCase(value: string) {
     });
 }
 
-/** Sembunyikan tahun di judul tampilan, mis. "… 70 Pax 2026-2027" → "… 70 Pax". */
+/** Sembunyikan tahun / label Master di judul tampilan. */
 export function displayProductName(value: string) {
   return value
+    .replace(/\(\s*master\s*\)/gi, "")
     .replace(/\s+20\d{2}(?:\s*[-–/]\s*20\d{2})?(?:\s*[-–]\s+\S+)?\s*$/g, "")
     .replace(/\s+20\d{2}(?:\s*[-–/]\s*20\d{2})?\b/g, "")
     .replace(/\s{2,}/g, " ")
