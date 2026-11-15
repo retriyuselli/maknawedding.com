@@ -37,7 +37,7 @@ export default function PortofolioPage() {
           <div>
             <p className="eyebrow">Cara membaca</p>
             <h2 id="baca-galeri">Tiga jenis perayaan, satu perhatian</h2>
-            <p>Galeri ini memakai ilustrasi supaya susunan halaman bisa dilihat sebelum foto klien tersedia. Nama, kota, dan tanggal baru masuk setelah ada persetujuan publikasi.</p>
+            <p>Galeri ini memakai ilustrasi agar Anda bisa merasakan susunan ruangnya dulu. Nama pasangan, kota, dan tanggal baru kami tampilkan setelah ada izin publikasi.</p>
           </div>
           <ol>
             <li>
@@ -105,7 +105,7 @@ export default function PortofolioPage() {
 
         <section className="home-shell home-section" aria-labelledby="cerita-menyusul">
           <h2 id="cerita-menyusul">Yang menyusul saat cerita terbit</h2>
-          <p className="section-note">Tiga keterangan ini sengaja masih kosong. Isinya baru diisi dari perayaan yang sudah memberi izin.</p>
+          <p className="section-note">Tiga keterangan ini menunggu cerita pasangan yang sudah memberi izin untuk dibagikan.</p>
           <ol className="about-steps">
             <li>
               <h3>Kota dan venue</h3>

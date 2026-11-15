@@ -23,7 +23,7 @@ export function ServicesGrid({ consultHref = "/konsultasi", showIntro = true, de
               <p className="eyebrow">Layanan</p>
               <h2 id="peran-layanan">Empat peran yang bisa digabung</h2>
             </div>
-            <p className="experience-lead">Setiap kartu memuat cakupan yang biasa dibahas. Angka tamu, kota, dan tanggal baru ditentukan saat konsultasi.</p>
+            <p className="experience-lead">Empat peran yang biasa kami bahas bersama Anda. Jumlah tamu, kota, dan tanggal kami sesuaikan saat konsultasi.</p>
           </div>
         ) : null}
         {intro ? (

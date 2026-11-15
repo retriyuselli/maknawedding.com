@@ -16,7 +16,7 @@ export function PackageStrip({ showIntro = true, detailed = false }: { showIntro
         <>
           <p className="eyebrow">Paket</p>
           <h2 id="banding-paket">Tiga cakupan pendampingan</h2>
-          <p className="section-note">Nama paket mengikuti skala acara. Biaya Makna, venue, dan vendor tidak tertulis di kartu karena bergantung pada kota dan tanggal. Klik kartu untuk membaca cakupan lengkapnya.</p>
+          <p className="section-note">Nama paket mengikuti skala acara Anda. Biaya Makna, venue, dan vendor kami sesuaikan setelah kota dan tanggal diketahui. Buka setiap paket untuk membaca cakupannya.</p>
         </>
       ) : null}
       {intro ? (
@@ -34,7 +34,6 @@ export function PackageStrip({ showIntro = true, detailed = false }: { showIntro
               {item.features.map((feature) => <li key={feature}>{feature}</li>)}
             </ul>
             {detailed ? <p className="package-scope">{item.scope}</p> : null}
-            <span className="package-card-cue">Lihat cakupan <span aria-hidden>→</span></span>
           </Link>
         ))}
       </div>

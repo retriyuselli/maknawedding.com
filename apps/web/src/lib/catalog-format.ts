@@ -24,3 +24,11 @@ export function rupiah(value: number) {
 export function paxLabel(value: number) {
   return `${new Intl.NumberFormat("id-ID").format(value)} pax`;
 }
+
+export function titleCase(value: string) {
+  return value
+    .toLocaleLowerCase("id-ID")
+    .replace(/(^|[^\p{L}\p{N}]+)(\p{L})/gu, (_match, prefix: string, letter: string) => {
+      return `${prefix}${letter.toLocaleUpperCase("id-ID")}`;
+    });
+}

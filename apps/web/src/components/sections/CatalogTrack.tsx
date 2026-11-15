@@ -48,30 +48,30 @@ export function CatalogTrack({ ok, items }: { ok: boolean; items: CatalogProduct
   }
 
   const note = ok
-    ? "Geser ke kiri atau kanan. More membuka seluruh daftar. Setiap kartu membuka rincian di situs ini."
-    : "Katalog belum bisa dimuat. Daftar paket menyusul setelah sambungan pulih.";
+    ? "Geser untuk melihat pilihan lain, atau buka daftar lengkapnya. Pilih paket untuk melihat harga dan isinya."
+    : "Daftar paket belum siap ditampilkan. Silakan coba lagi sebentar.";
 
   return (
     <section className="home-shell home-section" aria-labelledby="katalog-paket">
       <div className="catalog-bar">
         <div>
           <p className="eyebrow">Katalog</p>
-          <h2 id="katalog-paket">Paket venue untuk dibaca setelah skalanya cocok</h2>
+          <h2 id="katalog-paket">Paket venue yang bisa Anda bandingkan</h2>
           <p className="section-note">{note}</p>
         </div>
         <div className="catalog-controls">
           {items.length > 0 ? (
             <>
-              <button type="button" onClick={() => move(-1)} disabled={edges.start} aria-label="Kartu sebelumnya">
+              <button type="button" onClick={() => move(-1)} disabled={edges.start} aria-label="Paket sebelumnya">
                 <span aria-hidden>←</span>
               </button>
-              <button type="button" onClick={() => move(1)} disabled={edges.end} aria-label="Kartu berikutnya">
+              <button type="button" onClick={() => move(1)} disabled={edges.end} aria-label="Paket berikutnya">
                 <span aria-hidden>→</span>
               </button>
             </>
           ) : null}
           <Link href="/produk" className="catalog-more">
-            More
+            Semua
           </Link>
         </div>
       </div>
@@ -79,7 +79,7 @@ export function CatalogTrack({ ok, items }: { ok: boolean; items: CatalogProduct
         <ul
           ref={scroller}
           className="catalog-track"
-          aria-label="Kartu katalog, geser ke kiri atau kanan"
+          aria-label="Daftar paket, geser ke kiri atau kanan"
           onScroll={updateEdges}
         >
           {items.map((item) => (

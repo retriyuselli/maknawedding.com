@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { paxLabel, rupiah } from "@/lib/catalog-format";
+import { paxLabel, rupiah, titleCase } from "@/lib/catalog-format";
 import { financeCatalog, financeProduct } from "@/lib/finance-catalog";
 import "./produk-detail.css";
 
@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!product) return { title: "Produk | Makna Wedding & Event Planner" };
   return {
     title: `${product.name} | Produk Makna`,
-    description: product.description ?? `${product.name} dari katalog Makna Wedding.`,
+    description: product.description ?? `${product.name} dari pilihan paket Makna Wedding.`,
   };
 }
 
@@ -36,6 +36,35 @@ export default async function ProdukDetailPage({ params }: PageProps) {
   const relatedFallback = product && related.length === 0
     ? catalog.products.filter((item) => item.slug !== product.slug).slice(0, 3)
     : related;
+
+  const facilities = (() => {
+    const seen = new Set<string>();
+    return (product?.facilities ?? []).filter((facility) => {
+      const key = facility.name.trim().toLocaleLowerCase("id-ID");
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  })();
+
+  const renderFacility = (
+    facility: (typeof facilities)[number],
+    key: string,
+  ) => {
+    const hasDetails = facility.details.length > 0;
+    const lines = hasDetails ? facility.details : [facility.name];
+
+    return (
+      <li key={key} className={hasDetails ? undefined : "produk-facility-solo"}>
+        {hasDetails ? <h3>{titleCase(facility.name)}</h3> : null}
+        <ul className="produk-facility-details">
+          {lines.map((line) => (
+            <li key={line}>{titleCase(line)}</li>
+          ))}
+        </ul>
+      </li>
+    );
+  };
 
   return (
     <>
@@ -64,7 +93,7 @@ export default async function ProdukDetailPage({ params }: PageProps) {
                   {product.price ? (
                     <div className="produk-price-block">
                       <p className="produk-price">{rupiah(product.price)}</p>
-                      <p className="produk-price-note">Harga terbit. Nilai akhir mengikuti kesepakatan konsultasi.</p>
+                      <p className="produk-price-note">Harga yang tertera. Nilai akhir kami sesuaikan bersama saat konsultasi.</p>
                     </div>
                   ) : null}
                   {product.pax || product.paxAkad ? (
@@ -82,7 +111,7 @@ export default async function ProdukDetailPage({ params }: PageProps) {
                     Tanya paket ini <span aria-hidden>→</span>
                   </Link>
                   <Link href="/produk" className="produk-hero-link">
-                    Semua produk <span aria-hidden>↗</span>
+                    Semua paket <span aria-hidden>↗</span>
                   </Link>
                 </div>
               </div>
@@ -90,36 +119,23 @@ export default async function ProdukDetailPage({ params }: PageProps) {
 
             <section className="home-shell home-section produk-includes" aria-labelledby="produk-termasuk">
               <div className="produk-includes-head">
-                <div>
-                  <p className="eyebrow">Cakupan</p>
-                  <h2 id="produk-termasuk">Yang termasuk</h2>
-                </div>
-                <p className="section-note">
-                  {product.facilities.length > 0
-                    ? `${product.facilities.length} fasilitas dari katalog. Semuanya tetap di halaman ini.`
-                    : "Daftar fasilitas untuk paket ini belum tersedia."}
-                </p>
+                <p className="eyebrow">Cakupan</p>
+                <h2 id="produk-termasuk">Yang termasuk</h2>
+                {facilities.length === 0 ? (
+                  <p className="section-note">Rincian isi paket ini masih kami lengkapi.</p>
+                ) : null}
               </div>
 
-              {product.facilities.length > 0 ? (
+              {facilities.length > 0 ? (
                 <ul className="produk-facility-grid">
-                  {product.facilities.map((facility, index) => (
-                    <li key={`${facility.name}-${index}`}>
-                      <h3>{facility.name}</h3>
-                      {facility.details.length > 0 ? (
-                        <ul className="produk-facility-details">
-                          {facility.details.map((line) => (
-                            <li key={line}>{line}</li>
-                          ))}
-                        </ul>
-                      ) : null}
-                    </li>
-                  ))}
+                  {facilities.map((facility, index) =>
+                    renderFacility(facility, `${facility.name}-${index}`),
+                  )}
                 </ul>
               ) : null}
 
               <Link href="/produk" className="produk-back">
-                Kembali ke produk <span aria-hidden>↗</span>
+                Kembali ke daftar paket <span aria-hidden>↗</span>
               </Link>
             </section>
 
@@ -138,7 +154,7 @@ export default async function ProdukDetailPage({ params }: PageProps) {
                           <span className="produk-related-copy">
                             <span className="produk-related-name">{item.name}</span>
                             {item.price ? <span className="produk-related-price">{rupiah(item.price)}</span> : null}
-                            <span className="produk-related-cue">Lihat rincian <span aria-hidden>→</span></span>
+                            <span className="produk-related-cue">Lihat paket <span aria-hidden>→</span></span>
                           </span>
                         </Link>
                       </li>
@@ -159,7 +175,7 @@ export default async function ProdukDetailPage({ params }: PageProps) {
                     Mulai Konsultasi <span aria-hidden>→</span>
                   </Link>
                   <Link href="/produk" className="about-services-link">
-                    Kembali ke produk <span aria-hidden>↗</span>
+                    Kembali ke daftar paket <span aria-hidden>↗</span>
                   </Link>
                 </div>
               </div>
@@ -177,10 +193,10 @@ export default async function ProdukDetailPage({ params }: PageProps) {
                 </ol>
               </nav>
               <p className="eyebrow">Katalog</p>
-              <h1 id="judul-produk-detail">Katalog belum dimuat</h1>
-              <p className="produk-lede">Muat ulang halaman ini beberapa saat lagi.</p>
+              <h1 id="judul-produk-detail">Paket belum siap ditampilkan</h1>
+              <p className="produk-lede">Silakan coba lagi sebentar.</p>
               <Link href="/produk" className="produk-hero-link">
-                Kembali ke produk <span aria-hidden>↗</span>
+                Kembali ke daftar paket <span aria-hidden>↗</span>
               </Link>
             </div>
           </section>

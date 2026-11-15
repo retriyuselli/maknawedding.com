@@ -33,13 +33,13 @@ export function PortfolioGrid({ showIntro = true, detailed = false }: { showIntr
         <>
           <p className="eyebrow">Galeri</p>
           <h2 id="galeri-konsep">Enam konsep untuk dibaca pelan-pelan</h2>
-          <p className="section-note">Setiap kartu adalah ilustrasi suasana, bukan cerita klien. Klik kartu untuk melihat foto-foto konsep itu.</p>
+          <p className="section-note">Ini inspirasi suasana, bukan cerita pasangan tertentu. Buka setiap konsep untuk melihat fotonya.</p>
         </>
       ) : null}
       {intro ? (
         <>
           <h2>Our Portfolio</h2>
-          <p className="section-note">Galeri inspirasi perayaan dengan ilustrasi AI.</p>
+          <p className="section-note">Galeri inspirasi perayaan untuk membantu Anda membayangkan suasana.</p>
         </>
       ) : null}
       <div className="portfolio-filters" role="group" aria-label="Kategori portofolio">

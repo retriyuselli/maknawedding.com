@@ -10,7 +10,7 @@ export const packageDetails = [
       alt: "Momen prosesi di bawah naungan taman",
     },
     paragraphs: [
-      "Essential untuk perayaan yang selesai dalam satu hari, dengan jumlah tamu yang dijaga tetap dekat. Namanya menandai cakupan yang ramping: suasana hari itu, urutan acaranya, dan cara venue dipakai. Kartu ini bukan daftar harga, dan bukan paket yang menyertakan venue, hidangan, atau vendor.",
+      "Essential untuk perayaan yang selesai dalam satu hari, dengan jumlah tamu yang dijaga tetap dekat. Namanya menandai cakupan yang ramping: suasana hari itu, urutan acaranya, dan cara venue dipakai. Ini paket pendampingan, bukan daftar harga, dan belum mencakup venue, hidangan, atau vendor.",
       "Konsep dan palet di Essential adalah satu arah visual untuk ruang yang dipakai pada hari itu. Warna dasar dipilih lebih dulu, lalu diterjemahkan ke kain, bunga, dan meja. Palet tidak dipecah menjadi beberapa suasana untuk hari yang berbeda, karena rangkaiannya memang satu hari.",
       "Rundown satu hari menulis urutan dari tamu datang sampai acara selesai. Jam dikunci hanya untuk momen yang mengumpulkan banyak orang sekaligus. Perpindahan di dalam venue yang sama diberi jeda, supaya keluarga tidak merasa dikejar menit di antara dua bagian acara.",
       "Koordinasi venue membaca denah, pintu masuk, dan jalur tamu di lokasi yang sudah dipilih. Jika vendor utama sudah ditunjuk, urutan hari disesuaikan dengan mereka. Mencari, membandingkan, dan mengontrak vendor dari nol tidak termasuk di Essential. Bagian itu masuk ketika perencanaan masih terbuka.",
@@ -36,7 +36,7 @@ export const packageDetails = [
       },
       {
         title: "Hari kedua",
-        text: "Momen di hari lain, termasuk tamu yang menginap, berada di luar kartu ini. Rangkaian beberapa hari dibaca di Royal.",
+        text: "Momen di hari lain, termasuk tamu yang menginap, berada di luar cakupan ini. Rangkaian beberapa hari dibaca di Royal.",
       },
       {
         title: "Tagihan pihak lain",
@@ -69,7 +69,7 @@ export const packageDetails = [
       alt: "Meja resepsi di taman dengan lilin dan untaian lampu",
     },
     paragraphs: [
-      "Signature untuk pernikahan yang ingin prosesi dan resepsi terasa satu rangkaian, bukan dua acara yang hanya berurutan di kertas. Pendampingannya mencakup perencanaan, desain acara, dan koordinasi pada hari-H. Harga tidak tertulis di halaman ini.",
+      "Signature untuk pernikahan yang ingin prosesi dan resepsi terasa satu rangkaian, bukan dua acara yang hanya berurutan di kertas. Pendampingannya mencakup perencanaan, desain acara, dan koordinasi pada hari-H. Biaya kami bahas bersama saat konsultasi.",
       "Perencanaan menyeluruh dipakai ketika banyak keputusan masih terbuka. Kota, tanggal atau rentang, perkiraan tamu, dan peran tiap vendor dibahas sebelum hari-H. Jika konsep dan vendor sudah lengkap, bagian perencanaan bisa diringkas. Jika belum, bagian itu yang mengisi waktu sebelum desain dikunci.",
       "Desain acara menyusun palet, tata ruang, dan perjalanan tamu dari prosesi ke resepsi. Di satu venue, dua suasana dipisah lewat zona. Di dua lokasi, jalur pindah ikut dirancang: di mana keluarga berkumpul, berapa jeda yang aman, dan sisi mana yang teduh saat sore.",
       "Koordinasi hari-H memegang urutan di lokasi. Satu kontak menerima perubahan jam, hujan, atau kedatangan yang bergeser. Prosesi dan resepsi memakai rundown yang sama, supaya pesan untuk keluarga dan vendor tidak saling bertentangan.",
@@ -98,8 +98,8 @@ export const packageDetails = [
         text: "Pendampingan tidak menggantikan kontrak venue, hidangan, busana, atau vendor. Masing-masing tetap ditagih oleh pihaknya.",
       },
       {
-        title: "Angka yang dikunci di halaman",
-        text: "Biaya Makna tidak dicantumkan di kartu. Nilainya dibahas setelah kota, tanggal, dan perkiraan tamu diketahui.",
+        title: "Biaya yang dibahas kemudian",
+        text: "Biaya Makna kami sesuaikan setelah kota, tanggal, dan perkiraan tamu diketahui.",
       },
     ],
     checks: [
@@ -128,7 +128,7 @@ export const packageDetails = [
       alt: "Meja resepsi pada malam hari dengan cahaya hangat",
     },
     paragraphs: [
-      "Royal untuk rangkaian yang tidak selesai dalam satu hari. Lamaran, prosesi, resepsi, atau makan keluarga bisa berdiri sebagai momen sendiri. Tamu yang datang dari luar kota membutuhkan urutan yang menjelaskan di mana mereka harus berada pada tiap hari. Harga tidak dicantumkan di halaman ini.",
+      "Royal untuk rangkaian yang tidak selesai dalam satu hari. Lamaran, prosesi, resepsi, atau makan keluarga bisa berdiri sebagai momen sendiri. Tamu yang datang dari luar kota membutuhkan urutan yang menjelaskan di mana mereka harus berada pada tiap hari. Biaya kami bahas bersama saat konsultasi.",
       "Beberapa momen acara ditulis sebagai satu rangkaian, bukan sebagai daftar yang terpisah. Jam dikunci hanya jika banyak pihak harus hadir bersamaan. Di antaranya ada jeda untuk istirahat, perpindahan venue, dan tamu yang baru tiba.",
       "Pengarahan vendor menyatukan pihak yang bekerja di hari berbeda. Vendor hari pertama perlu tahu apa yang tidak boleh berubah sebelum hari berikutnya. Satu lembar kerja memegang urutan, supaya pesan yang beredar tidak saling bertentangan.",
       "Pendampingan keluarga membantu orang yang menyambut tamu dari luar kota. Mereka mendapat versi ringkas: berkumpul, momen, lalu pindah. Detail vendor tetap di koordinator. Keluarga tidak memegang dua rundown yang berbeda untuk hari yang sama.",

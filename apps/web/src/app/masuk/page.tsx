@@ -7,11 +7,11 @@ import { readSession } from "@/lib/session";
 
 export const metadata: Metadata = {
   title: "Masuk | Makna Wedding & Event Planner",
-  description: "Masuk dengan akun percobaan atau Gmail.",
+  description: "Masuk ke akun Makna Wedding dengan email atau Gmail.",
 };
 
 const googleErrors: Record<string, string> = {
-  konfigurasi: "Masuk dengan Gmail belum dapat dipakai. Pengaturan Google di maknafinance masih kosong.",
+  konfigurasi: "Masuk dengan Gmail belum siap. Silakan coba lagi nanti atau masuk dengan email.",
   batal: "Masuk dengan Gmail dibatalkan.",
   gagal: "Gagal masuk dengan Gmail. Silakan coba lagi.",
   email: "Akun Gmail tidak menyediakan email yang valid.",
@@ -33,7 +33,7 @@ export default async function MasukPage({ searchParams }: { searchParams: Promis
           image="/weddings/placeholders/cerita-unggulan.webp"
           alt="Pasangan pengantin berjalan bersama di taman"
           line="Selamat datang kembali."
-          note="Akun percobaan atau Gmail bisa masuk dari formulir ini."
+          note="Masuk dengan email atau Gmail untuk melanjutkan."
         />
       </main>
       <SiteFooter isHome={false} currentPath="/masuk" />

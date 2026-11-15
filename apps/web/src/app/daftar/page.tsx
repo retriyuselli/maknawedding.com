@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 
 export const metadata: Metadata = {
   title: "Daftar | Makna Wedding & Event Planner",
-  description: "Daftar akun Makna. Formulir menampilkan pratinjau dan belum membuat akun.",
+  description: "Daftar akun Makna Wedding untuk mengikuti persiapan perayaan Anda.",
 };
 
 export default function DaftarPage() {
@@ -19,7 +19,7 @@ export default function DaftarPage() {
           image="/weddings/placeholders/resepsi.webp"
           alt="Meja resepsi di taman pada sore hari, dengan lampu dan bunga"
           line="Mulai dari percakapan."
-          note="Ilustrasi suasana resepsi. Akun belum dibuat dari halaman ini."
+          note="Ilustrasi suasana resepsi. Isi data Anda untuk mulai mendaftar."
           focus="center 58%"
         />
       </main>

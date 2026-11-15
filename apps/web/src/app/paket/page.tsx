@@ -38,7 +38,7 @@ export default function PaketPage() {
           <div>
             <p className="eyebrow">Cara membaca</p>
             <h2 id="baca-paket">Bandingkan skala, bukan nama</h2>
-            <p>Paket dibedakan dari lama acara dan seberapa banyak keputusan yang masih perlu didampingi. Harga tidak dicantumkan di halaman ini.</p>
+            <p>Paket dibedakan dari lama acara dan seberapa banyak keputusan yang masih perlu didampingi. Biaya kami bahas bersama saat konsultasi.</p>
           </div>
           <ol>
             <li>
@@ -61,8 +61,8 @@ export default function PaketPage() {
         <CatalogPreview />
 
         <section className="home-shell home-section" aria-labelledby="di-luar-paket">
-          <h2 id="di-luar-paket">Yang tidak termasuk di kartu</h2>
-          <p className="section-note">Tiga hal ini sengaja belum diisi. Isinya berubah sesuai acara, jadi tidak dikunci sebagai daftar harga.</p>
+          <h2 id="di-luar-paket">Yang belum kami cantumkan di sini</h2>
+          <p className="section-note">Tiga hal ini menunggu detail acara Anda. Isinya berubah sesuai kota, tanggal, dan skala perayaan.</p>
           <ol className="about-steps">
             <li>
               <h3>Biaya pendampingan</h3>

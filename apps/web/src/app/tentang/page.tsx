@@ -105,7 +105,7 @@ export default function AboutPage() {
         <section className="home-shell home-section" aria-labelledby="mulai-bersama-makna">
           <div className="consultation-banner">
             <h2 id="mulai-bersama-makna"><em>Siap menulis permintaan konsultasi?</em></h2>
-            <p>Siapkan kota, tanggal atau rentang bulan, dan perkiraan tamu. Formulir menampilkan pratinjau dan belum mengirim permintaan.</p>
+            <p>Siapkan kota, tanggal atau rentang bulan, dan perkiraan tamu. Kami akan mendengar cerita Anda dari situ.</p>
             <div className="about-actions">
               <Link href="/konsultasi" className="silk-button">Mulai Konsultasi <span aria-hidden>→</span></Link>
               <Link href="/layanan" className="about-services-link">Lihat Layanan <span aria-hidden>↗</span></Link>

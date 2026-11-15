@@ -20,7 +20,7 @@ export function JournalStrip({ showIntro = true, detailed = false }: { showIntro
         <>
           <p className="eyebrow">Jurnal</p>
           <h2 id="daftar-jurnal">Enam catatan untuk dibaca pelan-pelan</h2>
-          <p className="section-note">Setiap catatan adalah susunan editorial. Nama venue, tanggal, dan cerita pasangan belum diisi.</p>
+          <p className="section-note">Catatan singkat untuk mempersiapkan acara. Nama venue dan cerita pasangan kami tampilkan setelah ada izin.</p>
         </>
       ) : null}
       {intro ? (

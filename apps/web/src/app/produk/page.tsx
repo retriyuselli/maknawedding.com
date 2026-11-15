@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { CatalogCard } from "@/components/sections/CatalogCard";
+import { ProdukCatalog } from "@/components/sections/ProdukCatalog";
 import "@/components/sections/catalog-preview.css";
 import { financeCatalog } from "@/lib/finance-catalog";
 
@@ -12,8 +12,8 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Produk | Makna Wedding & Event Planner",
       description: catalog.ok
-      ? `${catalog.products.length} paket venue dengan harga dan fasilitas di halaman detail.`
-      : "Katalog paket venue Makna Wedding.",
+      ? `${catalog.products.length} pilihan paket venue untuk dibandingkan: harga, jumlah tamu, dan isi paket.`
+      : "Pilihan paket venue Makna Wedding.",
   };
 }
 
@@ -40,28 +40,22 @@ export default async function ProdukPage() {
             </h1>
             <p>
               {catalog.ok
-                ? `${count} paket venue. Harga, jumlah tamu, dan fasilitas dibuka di halaman masing-masing.`
-                : "Katalog belum bisa dimuat. Daftar paket menyusul setelah sambungan pulih."}
+                ? `${count} pilihan paket venue. Bandingkan harga, jumlah tamu, dan apa saja yang termasuk.`
+                : "Daftar paket belum siap ditampilkan. Silakan coba lagi sebentar."}
             </p>
           </div>
         </section>
 
         <section className="home-shell home-section" aria-labelledby="daftar-produk">
           <p className="eyebrow">Katalog</p>
-          <h2 id="daftar-produk">{catalog.ok ? "Semua paket" : "Katalog belum dimuat"}</h2>
+          <h2 id="daftar-produk">{catalog.ok ? "Semua paket" : "Daftar paket belum siap"}</h2>
           <p className="section-note">
             {catalog.ok
-              ? "Setiap kartu membuka rincian paket di situs ini, termasuk harga terbit dan fasilitas."
-              : "Sambungan katalog belum menjawab. Muat ulang halaman ini beberapa saat lagi."}
+              ? "Pilih yang paling dekat dengan jumlah tamu dan suasana yang Anda bayangkan. Di dalamnya ada harga dan daftar isi paket."
+              : "Daftar paket belum bisa ditampilkan. Silakan coba lagi sebentar."}
           </p>
           {catalog.products.length > 0 ? (
-            <ul className="catalog-grid" aria-label="Semua paket katalog">
-              {catalog.products.map((item) => (
-                <li key={item.slug}>
-                  <CatalogCard item={item} />
-                </li>
-              ))}
-            </ul>
+            <ProdukCatalog products={catalog.products} />
           ) : null}
           <Link href="/paket" className="catalog-back">
             Kembali ke paket <span aria-hidden>↗</span>

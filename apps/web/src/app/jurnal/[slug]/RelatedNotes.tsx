@@ -101,7 +101,7 @@ export function RelatedNotes({ notes }: { notes: readonly RelatedNote[] }) {
       <div className="journal-slider-bar">
         <div>
           <h2 id="catatan-lain">Catatan lain</h2>
-          <p className="section-note">Klik kartu untuk membuka catatannya, atau geser ke kiri untuk melihat yang berikutnya.</p>
+          <p className="section-note">Buka catatan yang menarik, atau geser untuk melihat yang berikutnya.</p>
         </div>
         <div className="journal-slider-controls">
           <button type="button" onClick={() => move(-1)} disabled={edges.start} aria-label="Catatan sebelumnya">

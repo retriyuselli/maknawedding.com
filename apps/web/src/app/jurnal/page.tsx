@@ -59,7 +59,7 @@ export default function JurnalPage() {
 
         <section className="home-shell home-section" aria-labelledby="jurnal-menyusul">
           <h2 id="jurnal-menyusul">Yang menyusul di jurnal</h2>
-          <p className="section-note">Tiga keterangan ini masih kosong. Catatan baru baru ditambahkan jika bahannya memang dari persiapan acara.</p>
+          <p className="section-note">Tiga keterangan ini menunggu catatan baru dari persiapan acara yang memang siap dibagikan.</p>
           <ol className="about-steps">
             <li>
               <h3>Nama tempat</h3>

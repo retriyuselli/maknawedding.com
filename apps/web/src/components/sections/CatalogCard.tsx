@@ -19,11 +19,6 @@ export function CatalogCard({ item }: { item: CatalogProduct }) {
             {item.paxAkad ? <span>Akad {paxLabel(item.paxAkad)}</span> : null}
           </p>
         ) : null}
-        {item.includes.length > 0 ? (
-          <ul>
-            {item.includes.slice(0, 4).map((line) => <li key={line}>{line}</li>)}
-          </ul>
-        ) : null}
         <p className="catalog-cue">Lihat paket</p>
       </div>
     </Link>

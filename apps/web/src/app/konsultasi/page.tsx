@@ -7,7 +7,7 @@ import { ConsultationForm } from "@/components/sections/ConsultationForm";
 
 export const metadata: Metadata = {
   title: "Konsultasi | Makna Wedding & Event Planner",
-  description: "Mulai konsultasi dengan Makna. Siapkan kota acara, tanggal atau rentang bulan, dan perkiraan tamu. Formulir menampilkan pratinjau permintaan.",
+  description: "Mulai konsultasi dengan Makna. Siapkan kota acara, tanggal atau rentang bulan, dan perkiraan tamu.",
 };
 
 export default function KonsultasiPage() {
@@ -32,7 +32,7 @@ export default function KonsultasiPage() {
 
         <section className="home-shell home-section" aria-labelledby="siapkan-konsultasi">
           <h2 id="siapkan-konsultasi">Tiga hal yang membantu</h2>
-          <p className="section-note">Angka yang belum pasti boleh ditulis sebagai perkiraan. Formulir menampilkan pratinjau dan belum mengirim permintaan.</p>
+          <p className="section-note">Angka yang belum pasti boleh ditulis sebagai perkiraan. Isi formulir ini sebagai langkah awal percakapan dengan kami.</p>
           <ol className="about-steps">
             <li>
               <h3>Kota acara</h3>
@@ -56,7 +56,7 @@ export default function KonsultasiPage() {
             <h2 id="konsultasi-cakupan">
               <em>Ingin melihat cakupan sebelum menulis?</em>
             </h2>
-            <p>Layanan dan paket menjelaskan peran Makna. Harga belum dicantumkan.</p>
+            <p>Lihat dulu layanan dan paket Makna. Biaya kami bahas setelah skala acara Anda jelas.</p>
             <div className="about-actions">
               <Link href="/layanan" className="silk-button">Lihat layanan <span aria-hidden>→</span></Link>
               <Link href="/paket" className="about-services-link">Lihat paket <span aria-hidden>↗</span></Link>
