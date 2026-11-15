@@ -11,9 +11,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const catalog = await financeCatalog();
   return {
     title: "Produk | Makna Wedding & Event Planner",
-    description: catalog.ok
-      ? `${catalog.products.length} paket venue dari katalog maknafinance.`
-      : "Katalog paket venue dari maknafinance.",
+      description: catalog.ok
+      ? `${catalog.products.length} paket venue dengan harga dan fasilitas di halaman detail.`
+      : "Katalog paket venue Makna Wedding.",
   };
 }
 
@@ -40,8 +40,8 @@ export default async function ProdukPage() {
             </h1>
             <p>
               {catalog.ok
-                ? `${count} paket venue dari katalog maknafinance. Harga dan jumlah tamu mengikuti catatan di sana.`
-                : "Katalog maknafinance belum bisa dimuat. Daftar paket menyusul setelah sambungan pulih."}
+                ? `${count} paket venue. Harga, jumlah tamu, dan fasilitas dibuka di halaman masing-masing.`
+                : "Katalog belum bisa dimuat. Daftar paket menyusul setelah sambungan pulih."}
             </p>
           </div>
         </section>
@@ -51,8 +51,8 @@ export default async function ProdukPage() {
           <h2 id="daftar-produk">{catalog.ok ? "Semua paket" : "Katalog belum dimuat"}</h2>
           <p className="section-note">
             {catalog.ok
-              ? "Setiap kartu membuka ringkasan paket. Rincian fasilitas dan cetak tetap ada di katalog maknafinance."
-              : "Sambungan ke katalog maknafinance belum menjawab. Muat ulang halaman ini beberapa saat lagi."}
+              ? "Setiap kartu membuka rincian paket di situs ini, termasuk harga terbit dan fasilitas."
+              : "Sambungan katalog belum menjawab. Muat ulang halaman ini beberapa saat lagi."}
           </p>
           {catalog.products.length > 0 ? (
             <ul className="catalog-grid" aria-label="Semua paket katalog">

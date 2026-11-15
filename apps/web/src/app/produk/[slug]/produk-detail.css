@@ -1,0 +1,389 @@
+.produk-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  min-height: min(92svh, 52rem);
+  padding-block: calc(6.5rem + env(safe-area-inset-top)) clamp(2.4rem, 7vw, 5rem);
+  overflow: hidden;
+  color: #fffaf9;
+  background: #24182c;
+}
+
+.produk-hero-empty {
+  min-height: 70svh;
+}
+
+.produk-hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 32%;
+}
+
+.produk-hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, #21162ccc 0%, #21162c55 28%, #21162c18 48%, #21162ce8 100%),
+    linear-gradient(90deg, #21162ce0 0%, #21162c66 48%, #21162c22 100%);
+}
+
+.produk-hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+  min-width: 0;
+  max-width: 42rem;
+}
+
+.produk-breadcrumb {
+  min-width: 0;
+  margin-bottom: .2rem;
+}
+
+.produk-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem .55rem;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #d9cfe0;
+  font-size: .74rem;
+  font-weight: 650;
+}
+
+.produk-breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.produk-breadcrumb li + li::before {
+  content: "/";
+  margin-right: .55rem;
+  color: #b7a6c2;
+  font-weight: 500;
+}
+
+.produk-breadcrumb a {
+  color: #fffaf9;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.produk-breadcrumb a:hover {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.produk-breadcrumb [aria-current="page"] {
+  flex: 1 1 12rem;
+}
+
+.produk-breadcrumb [aria-current="page"] span {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  color: #d9cfe0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.produk-hero .eyebrow {
+  color: #e9c9f2;
+}
+
+.produk-hero h1 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font: 400 clamp(2.2rem, 7vw, 4.6rem)/1.04 var(--font-display);
+  letter-spacing: -.045em;
+}
+
+.produk-hero-meta {
+  display: grid;
+  gap: .85rem;
+  min-width: 0;
+}
+
+.produk-price {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font: 400 clamp(1.7rem, 4vw, 2.5rem)/1.1 var(--font-display);
+}
+
+.produk-price-note {
+  margin: .35rem 0 0;
+  max-width: 34ch;
+  color: #d9cfe0;
+  font-size: .8rem;
+  line-height: 1.5;
+}
+
+.produk-pax {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin: 0;
+}
+
+.produk-pax span {
+  max-width: 100%;
+  padding: .4rem .75rem;
+  border: 1px solid #ffffff4d;
+  border-radius: 999px;
+  background: #ffffff14;
+  color: #fffaf9;
+  font-size: .76rem;
+  font-weight: 650;
+}
+
+.produk-lede {
+  margin: 0;
+  max-width: 40ch;
+  overflow-wrap: anywhere;
+  color: #ebe3ef;
+  font-size: .95rem;
+  line-height: 1.7;
+}
+
+.produk-detail-actions {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  margin-top: .25rem;
+}
+
+.produk-detail-actions .silk-button,
+.produk-detail-actions .produk-hero-link,
+.produk-detail-actions .about-services-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  text-align: center;
+}
+
+.produk-hero-link {
+  color: #fffaf9;
+  font-size: .85rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.produk-hero-link:hover {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.produk-includes-head {
+  display: grid;
+  gap: .75rem;
+  min-width: 0;
+}
+
+.produk-includes h2 {
+  overflow-wrap: anywhere;
+}
+
+.produk-facility-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.35rem;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.produk-facility-grid > li {
+  min-width: 0;
+}
+
+.produk-facility-grid h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--home-plum);
+  font-size: .92rem;
+  font-weight: 750;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+.produk-facility-details {
+  display: grid;
+  gap: .2rem;
+  margin: .55rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.produk-facility-details > li {
+  position: relative;
+  min-width: 0;
+  padding-left: 1.05rem;
+  overflow-wrap: anywhere;
+  color: var(--home-ink, #24182c);
+  font-size: .9rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.produk-facility-details > li::before {
+  content: "-";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--home-ink, #24182c);
+  font-weight: 500;
+}
+
+.produk-back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 1.25rem;
+  color: #61466e;
+  font-size: .84rem;
+  font-weight: 650;
+}
+
+.produk-back:hover {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.produk-related-section {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  background: linear-gradient(180deg, #f4eef5, var(--home-paper));
+}
+
+.produk-related-section h2 {
+  overflow-wrap: anywhere;
+}
+
+.produk-related {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.produk-related > li {
+  min-width: 0;
+}
+
+.produk-related a {
+  display: grid;
+  gap: .85rem;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.produk-related-photo {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border-radius: 1.15rem;
+  background: #24182c;
+}
+
+.produk-related-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.produk-related-photo-empty {
+  background: linear-gradient(145deg, #534066, #302142);
+}
+
+.produk-related-copy {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  min-width: 0;
+}
+
+.produk-related-name {
+  overflow-wrap: anywhere;
+  color: var(--home-plum);
+  font: 400 1.35rem/1.2 var(--font-display);
+}
+
+.produk-related-price {
+  color: var(--home-muted);
+  font-size: .86rem;
+  font-weight: 650;
+}
+
+.produk-related-cue {
+  color: #8a7b90;
+  font-size: .78rem;
+  font-weight: 650;
+}
+
+.produk-related a:hover .produk-related-name {
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+
+@media (min-width: 700px) {
+  .produk-hero-inner {
+    max-width: 46rem;
+  }
+
+  .produk-detail-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .produk-detail-actions .silk-button,
+  .produk-detail-actions .produk-hero-link,
+  .produk-detail-actions .about-services-link {
+    width: auto;
+  }
+
+  .produk-includes-head {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+    align-items: end;
+    gap: 1.25rem;
+  }
+
+  .produk-facility-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+    row-gap: 1.6rem;
+  }
+
+  .produk-related {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 980px) {
+  .produk-hero {
+    min-height: min(88svh, 48rem);
+  }
+
+  .produk-hero h1 {
+    max-width: 14ch;
+  }
+}

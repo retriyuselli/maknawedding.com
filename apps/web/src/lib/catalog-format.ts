@@ -1,3 +1,9 @@
+export type CatalogFacility = {
+  name: string;
+  quantity: number;
+  details: string[];
+};
+
 export type CatalogProduct = {
   slug: string;
   name: string;
@@ -7,8 +13,8 @@ export type CatalogProduct = {
   pax: number | null;
   paxAkad: number | null;
   includes: string[];
+  facilities: CatalogFacility[];
   description: string | null;
-  url: string;
 };
 
 export function rupiah(value: number) {

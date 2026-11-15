@@ -48,15 +48,15 @@ export function CatalogTrack({ ok, items }: { ok: boolean; items: CatalogProduct
   }
 
   const note = ok
-    ? "Geser ke kiri atau kanan. More membuka seluruh daftar, berikut harga dan jumlah tamu yang tercatat di katalog."
-    : "Katalog maknafinance belum bisa dimuat. Daftar paket menyusul setelah sambungan pulih.";
+    ? "Geser ke kiri atau kanan. More membuka seluruh daftar. Setiap kartu membuka rincian di situs ini."
+    : "Katalog belum bisa dimuat. Daftar paket menyusul setelah sambungan pulih.";
 
   return (
     <section className="home-shell home-section" aria-labelledby="katalog-paket">
       <div className="catalog-bar">
         <div>
           <p className="eyebrow">Katalog</p>
-          <h2 id="katalog-paket">Paket venue dari katalog maknafinance</h2>
+          <h2 id="katalog-paket">Paket venue untuk dibaca setelah skalanya cocok</h2>
           <p className="section-note">{note}</p>
         </div>
         <div className="catalog-controls">
