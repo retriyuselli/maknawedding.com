@@ -1,25 +1,31 @@
-import Image from "next/image";
-import type { CatalogPreviewItem } from "@/lib/catalog-preview";
+import Link from "next/link";
+import { paxLabel, rupiah, type CatalogProduct } from "@/lib/catalog-format";
 
-export function CatalogCard({ item }: { item: CatalogPreviewItem }) {
+export function CatalogCard({ item }: { item: CatalogProduct }) {
   return (
-    <article className="catalog-card">
-      <div className="catalog-image">
-        <Image src={item.image} alt="" fill sizes="(min-width: 900px) 30vw, 92vw" />
+    <Link href={`/produk/${item.slug}`} className="catalog-card">
+      <div className={`catalog-image${item.image ? "" : " catalog-image-empty"}`}>
+        {item.image ? (
+          <img src={item.image} alt="" />
+        ) : null}
         <span className="catalog-tag">{item.category}</span>
       </div>
       <div className="catalog-body">
-        <h3>{item.title}</h3>
-        <p className="catalog-price">Harga belum terhubung</p>
-        <p className="catalog-pax">
-          <span>Resepsi belum terhubung</span>
-          <span>Akad belum terhubung</span>
-        </p>
-        <ul>
-          {item.includes.map((line) => <li key={line}>{line}</li>)}
-        </ul>
-        <p className="catalog-cue">Contoh, belum terhubung</p>
+        <h3>{item.name}</h3>
+        {item.price ? <p className="catalog-price">{rupiah(item.price)}</p> : null}
+        {item.pax || item.paxAkad ? (
+          <p className="catalog-pax">
+            {item.pax ? <span>Resepsi {paxLabel(item.pax)}</span> : null}
+            {item.paxAkad ? <span>Akad {paxLabel(item.paxAkad)}</span> : null}
+          </p>
+        ) : null}
+        {item.includes.length > 0 ? (
+          <ul>
+            {item.includes.slice(0, 4).map((line) => <li key={line}>{line}</li>)}
+          </ul>
+        ) : null}
+        <p className="catalog-cue">Lihat paket</p>
       </div>
-    </article>
+    </Link>
   );
 }
