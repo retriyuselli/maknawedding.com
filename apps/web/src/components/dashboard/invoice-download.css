@@ -1,0 +1,42 @@
+.invoice-download {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem .9rem;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  margin-top: .35rem;
+}
+
+.invoice-download button {
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: .4rem 1rem;
+  border: 1px solid var(--home-line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--home-plum);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.invoice-download p {
+  flex: 1 1 16rem;
+  min-width: 0;
+  margin: 0;
+  color: var(--home-muted);
+  font-size: .86rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 640px) {
+  .invoice-download {
+    display: grid;
+  }
+
+  .invoice-download button {
+    width: 100%;
+  }
+}

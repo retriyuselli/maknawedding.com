@@ -1,0 +1,138 @@
+.celebration {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+  container: celebration / inline-size;
+}
+
+.celebration-intro {
+  min-width: 0;
+  padding: clamp(1.15rem, 3vw, 1.7rem);
+  border: 1px solid var(--home-line);
+  border-radius: 1.5rem;
+  background: #fff;
+}
+
+.celebration-names {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: .5rem 1.25rem;
+  align-items: end;
+  margin: .35rem 0 0;
+}
+
+.celebration-names::before {
+  content: "&";
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  color: var(--home-muted);
+  font: italic 400 clamp(1.8rem, 3vw, 2.4rem)/1 var(--font-display);
+}
+
+.celebration-name {
+  display: grid;
+  min-width: 0;
+}
+
+.celebration-name:first-child {
+  grid-column: 1;
+}
+
+.celebration-name:last-child {
+  grid-column: 3;
+  text-align: right;
+}
+
+.celebration-person {
+  color: var(--home-plum);
+  font: italic 400 clamp(1.85rem, 3.6vw, 3rem)/.98 var(--font-display);
+  letter-spacing: -.03em;
+  overflow-wrap: anywhere;
+}
+
+.celebration-nick,
+.celebration-note {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.celebration-nick {
+  margin-top: .2rem;
+  color: var(--home-muted);
+  font-size: .95rem;
+  font-weight: 700;
+}
+
+.celebration-status {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .75rem 1rem;
+  margin: 1.1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--home-line);
+}
+
+.celebration-status div {
+  min-width: 0;
+}
+
+.celebration-status dt,
+.celebration-status dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.celebration-status dt {
+  color: var(--home-muted);
+  font-size: .75rem;
+}
+
+.celebration-status dd {
+  margin-top: .12rem;
+  color: var(--home-plum);
+  font-size: .92rem;
+  font-weight: 750;
+}
+
+.celebration-note {
+  max-width: 68ch;
+  color: var(--home-muted);
+  line-height: 1.6;
+}
+
+@container celebration (max-width: 40rem) {
+  .celebration-names {
+    grid-template-columns: 1fr;
+  }
+
+  .celebration-names::before {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  .celebration-name:first-child,
+  .celebration-name:last-child {
+    grid-column: 1;
+    text-align: left;
+  }
+
+  .celebration-name:last-child {
+    grid-row: 3;
+  }
+
+  .celebration-status {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .celebration-status div:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@container celebration (max-width: 20rem) {
+  .celebration-status {
+    grid-template-columns: 1fr;
+  }
+}

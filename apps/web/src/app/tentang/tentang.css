@@ -1,0 +1,9 @@
+@media (max-width: 640px) {
+  .about-actions {
+    width: 100%;
+  }
+
+  .about-actions .silk-button {
+    width: 100%;
+  }
+}

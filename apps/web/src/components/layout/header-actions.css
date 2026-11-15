@@ -1,0 +1,38 @@
+.header-actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: .5rem;
+}
+
+.header-login {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: .65rem 1.05rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: inherit;
+  font-size: .83rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.header-login:hover,
+.header-login[aria-current="page"] {
+  background: #ffffff2e;
+}
+
+.makna-header[data-solid="true"] .header-login:hover,
+.makna-header[data-solid="true"] .header-login[aria-current="page"] {
+  background: #efe4f2;
+}
+
+@media (max-width: 980px) {
+  .header-actions .header-cta,
+  .header-actions .header-login {
+    display: none;
+  }
+}

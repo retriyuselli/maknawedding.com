@@ -1,0 +1,42 @@
+.paket-board .eyebrow::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 1px;
+  margin-top: .85rem;
+  background: #c4a276;
+}
+
+.paket-board h2 {
+  margin-top: 1rem;
+}
+
+.paket-board .package-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.paket-board .package-card a {
+  margin-top: auto;
+}
+
+.package-card h3,
+.package-card p,
+.package-card li {
+  overflow-wrap: break-word;
+}
+
+.package-scope {
+  margin-top: .35rem;
+  color: var(--home-muted);
+  font-size: .84rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .package-card a {
+    width: 100%;
+    justify-content: center;
+  }
+}

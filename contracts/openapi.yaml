@@ -1,0 +1,461 @@
+openapi: 3.1.0
+info:
+  title: Makna Wedding Content and Inquiry API
+  version: 1.0.0
+servers:
+  - url: https://api.maknawedding.com/api/v1
+security: []
+paths:
+  /home:
+    get:
+      operationId: getHome
+      responses:
+        '200':
+          description: Homepage with published related records, ordered by editorial order
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data: {$ref: '#/components/schemas/Home'}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /settings:
+    get:
+      operationId: getSettings
+      responses:
+        '200':
+          description: Public brand settings
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data: {$ref: '#/components/schemas/Settings'}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /pages/{slug}:
+    parameters:
+      - $ref: '#/components/parameters/Slug'
+    get:
+      operationId: getPage
+      responses:
+        '200':
+          description: Published page
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data: {$ref: '#/components/schemas/Page'}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /services:
+    get:
+      operationId: listServices
+      responses:
+        '200':
+          description: All published services ordered by sortOrder then id ascending
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data:
+                    type: array
+                    items: {$ref: '#/components/schemas/Card'}
+  /services/{slug}:
+    parameters:
+      - $ref: '#/components/parameters/Slug'
+    get:
+      operationId: getService
+      responses:
+        '200': {$ref: '#/components/responses/Detail'}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /weddings:
+    get:
+      operationId: listWeddings
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          description: Published weddings ordered by sortOrder then id ascending
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/CardPage'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /weddings/{slug}:
+    parameters:
+      - $ref: '#/components/parameters/Slug'
+    get:
+      operationId: getWedding
+      responses:
+        '200':
+          description: Published wedding and ordered gallery
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data: {$ref: '#/components/schemas/Wedding'}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /packages:
+    get:
+      operationId: listPackages
+      responses:
+        '200':
+          description: All published packages ordered by sortOrder then id ascending
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data:
+                    type: array
+                    items: {$ref: '#/components/schemas/Package'}
+  /articles:
+    get:
+      operationId: listArticles
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          description: Published articles ordered by publishedAt then id descending
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/ArticlePage'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /articles/{slug}:
+    parameters:
+      - $ref: '#/components/parameters/Slug'
+    get:
+      operationId: getArticle
+      responses:
+        '200':
+          description: Published article
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data:
+                    allOf:
+                      - $ref: '#/components/schemas/Detail'
+                      - $ref: '#/components/schemas/ArticleCard'
+        '404': {$ref: '#/components/responses/NotFound'}
+  /inquiries:
+    post:
+      operationId: createInquiry
+      description: Replay of the same normalized payload returns the original receipt.
+      security:
+        - inquiryToken: []
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: {type: string, format: uuid}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/InquiryInput'}
+            example:
+              name: Nadia
+              email: nadia@example.com
+              city: Jakarta
+              serviceSlug: wedding-planner
+              consent: true
+              privacyVersion: '2027-01'
+              sourcePath: /konsultasi
+      responses:
+        '201':
+          description: Inquiry stored or identical request replayed
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data:
+                    type: object
+                    required: [id, createdAt]
+                    properties:
+                      id: {type: string, pattern: '^[0-7][0-9A-HJKMNP-TV-Z]{25}$'}
+                      createdAt: {type: string, format: date-time}
+        '401': {description: Missing or invalid server token}
+        '409': {description: Key already used with a different payload, content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+        '413': {description: Body exceeds 16 KiB}
+        '422': {$ref: '#/components/responses/Invalid'}
+        '429':
+          description: Rate limited
+          headers:
+            Retry-After:
+              schema: {type: integer, minimum: 1}
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Error'}
+        '503': {description: Temporary service failure}
+  /api/revalidate:
+    servers:
+      - url: https://maknawedding.com
+    post:
+      operationId: revalidateContent
+      security:
+        - revalidationToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [eventId]
+              properties:
+                eventId: {type: string, format: uuid}
+      responses:
+        '204': {description: Cache invalidated. Replaying the event is safe.}
+        '401': {description: Missing or invalid revalidation token}
+        '422': {$ref: '#/components/responses/Invalid'}
+        '503': {description: Retryable invalidation failure}
+components:
+  securitySchemes:
+    inquiryToken: {type: http, scheme: bearer}
+    revalidationToken: {type: http, scheme: bearer}
+  parameters:
+    Slug:
+      in: path
+      name: slug
+      required: true
+      schema: {$ref: '#/components/schemas/Slug'}
+    PageNumber:
+      in: query
+      name: page
+      schema: {type: integer, minimum: 1, default: 1}
+  responses:
+    NotFound:
+      description: Record unavailable or unpublished
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    Invalid:
+      description: Validation failed. Laravel field names match the request contract.
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/ValidationError'}
+    Detail:
+      description: Published content detail
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [data]
+            properties:
+              data: {$ref: '#/components/schemas/Detail'}
+  schemas:
+    Slug:
+      type: string
+      maxLength: 120
+      pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+    Error:
+      type: object
+      required: [message]
+      properties:
+        message: {type: string}
+    ValidationError:
+      allOf:
+        - $ref: '#/components/schemas/Error'
+        - type: object
+          required: [errors]
+          properties:
+            errors:
+              type: object
+              additionalProperties:
+                type: array
+                items: {type: string}
+    Image:
+      type: object
+      required: [url, width, height, alt, focalX, focalY]
+      properties:
+        url: {type: string, format: uri}
+        width: {type: integer, minimum: 1}
+        height: {type: integer, minimum: 1}
+        alt: {type: string}
+        focalX: {type: number, minimum: 0, maximum: 1}
+        focalY: {type: number, minimum: 0, maximum: 1}
+    Video:
+      type: object
+      required: [url, poster, captionsUrl]
+      properties:
+        url: {type: string, format: uri}
+        poster: {$ref: '#/components/schemas/Image'}
+        captionsUrl: {type: [string, 'null'], format: uri}
+    Seo:
+      type: object
+      required: [title, description, ogImage]
+      properties:
+        title: {type: string}
+        description: {type: string}
+        ogImage:
+          anyOf:
+            - $ref: '#/components/schemas/Image'
+            - {type: 'null'}
+    Settings:
+      type: object
+      required: [brandName, whatsappE164, contactEmail, socialLinks, defaultSeo, privacyVersion]
+      properties:
+        brandName: {type: string}
+        whatsappE164: {type: string, pattern: '^\+[1-9][0-9]{7,14}$'}
+        contactEmail: {type: string, format: email}
+        socialLinks:
+          type: object
+          additionalProperties: {type: string, format: uri}
+        defaultSeo: {$ref: '#/components/schemas/Seo'}
+        privacyVersion: {type: string, maxLength: 32}
+    Card:
+      type: object
+      required: [slug, title, summary, cover]
+      properties:
+        slug: {$ref: '#/components/schemas/Slug'}
+        title: {type: string}
+        summary: {type: string}
+        cover: {$ref: '#/components/schemas/Image'}
+    Detail:
+      allOf:
+        - $ref: '#/components/schemas/Card'
+        - type: object
+          required: [bodyHtml, seo]
+          properties:
+            bodyHtml: {type: string, description: Sanitized HTML}
+            seo: {$ref: '#/components/schemas/Seo'}
+    Page:
+      type: object
+      required: [slug, title, summary, bodyHtml, seo, hero, mobileHero, heroVideo, highlights]
+      properties:
+        slug: {$ref: '#/components/schemas/Slug'}
+        title: {type: string}
+        summary: {type: string}
+        bodyHtml: {type: [string, 'null'], description: Sanitized HTML when present}
+        seo: {$ref: '#/components/schemas/Seo'}
+        hero:
+          anyOf:
+            - $ref: '#/components/schemas/Image'
+            - {type: 'null'}
+        mobileHero:
+          anyOf:
+            - $ref: '#/components/schemas/Image'
+            - {type: 'null'}
+        heroVideo:
+          anyOf:
+            - $ref: '#/components/schemas/Video'
+            - {type: 'null'}
+        highlights:
+          type: array
+          items:
+            type: object
+            required: [label, value]
+            properties:
+              label: {type: string}
+              value: {type: string}
+    Wedding:
+      allOf:
+        - $ref: '#/components/schemas/Detail'
+        - type: object
+          required: [city, venue, eventDate, gallery]
+          properties:
+            city: {type: string}
+            venue: {type: [string, 'null']}
+            eventDate: {type: [string, 'null'], format: date}
+            gallery:
+              type: array
+              items:
+                type: object
+                required: [image, caption]
+                properties:
+                  image: {$ref: '#/components/schemas/Image'}
+                  caption: {type: [string, 'null']}
+    Package:
+      type: object
+      required: [slug, title, summary, features, priceFromIdr, serviceSlug]
+      properties:
+        slug: {$ref: '#/components/schemas/Slug'}
+        title: {type: string}
+        summary: {type: string}
+        features:
+          type: array
+          items: {type: string}
+        priceFromIdr: {type: [integer, 'null'], minimum: 0, maximum: 9007199254740991}
+        serviceSlug:
+          anyOf:
+            - $ref: '#/components/schemas/Slug'
+            - {type: 'null'}
+    ArticleCard:
+      allOf:
+        - $ref: '#/components/schemas/Card'
+        - type: object
+          required: [authorName, publishedAt]
+          properties:
+            authorName: {type: string}
+            publishedAt: {type: string, format: date-time}
+    Testimonial:
+      type: object
+      required: [displayName, quote, weddingSlug]
+      properties:
+        displayName: {type: string}
+        quote: {type: string}
+        weddingSlug:
+          anyOf:
+            - $ref: '#/components/schemas/Slug'
+            - {type: 'null'}
+    Home:
+      type: object
+      required: [page, services, featuredWeddings, packages, testimonials, latestArticles]
+      properties:
+        page: {$ref: '#/components/schemas/Page'}
+        services: {type: array, maxItems: 4, items: {$ref: '#/components/schemas/Card'}}
+        featuredWeddings: {type: array, maxItems: 3, items: {$ref: '#/components/schemas/Card'}}
+        packages: {type: array, maxItems: 3, items: {$ref: '#/components/schemas/Package'}}
+        testimonials: {type: array, maxItems: 3, items: {$ref: '#/components/schemas/Testimonial'}}
+        latestArticles: {type: array, maxItems: 3, items: {$ref: '#/components/schemas/ArticleCard'}}
+    Pagination:
+      type: object
+      required: [page, perPage, total, lastPage]
+      properties:
+        page: {type: integer, minimum: 1}
+        perPage: {type: integer, const: 12}
+        total: {type: integer, minimum: 0}
+        lastPage: {type: integer, minimum: 1}
+    CardPage:
+      type: object
+      required: [data, meta]
+      properties:
+        data: {type: array, items: {$ref: '#/components/schemas/Card'}}
+        meta: {$ref: '#/components/schemas/Pagination'}
+    ArticlePage:
+      type: object
+      required: [data, meta]
+      properties:
+        data: {type: array, items: {$ref: '#/components/schemas/ArticleCard'}}
+        meta: {$ref: '#/components/schemas/Pagination'}
+    InquiryInput:
+      type: object
+      additionalProperties: false
+      required: [name, city, consent, privacyVersion]
+      anyOf:
+        - required: [email]
+        - required: [phone]
+      properties:
+        name: {type: string, minLength: 2, maxLength: 120}
+        email: {type: string, format: email, maxLength: 254}
+        phone: {type: string, pattern: '^\+[1-9][0-9]{7,14}$'}
+        city: {type: string, minLength: 2, maxLength: 100}
+        serviceSlug: {$ref: '#/components/schemas/Slug'}
+        packageSlug: {$ref: '#/components/schemas/Slug'}
+        eventDate: {type: string, format: date}
+        message: {type: string, maxLength: 2000}
+        consent: {type: boolean, const: true}
+        privacyVersion: {type: string, minLength: 1, maxLength: 32}
+        sourcePath: {type: string, maxLength: 255, pattern: '^/(?!/)[^?#]*$'}

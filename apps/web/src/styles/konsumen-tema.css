@@ -1,0 +1,107 @@
+html[data-tema="konsumen"] {
+  --home-paper: #f3f6f0;
+  --home-plum: #1c332c;
+  --home-muted: #5c6d63;
+  --home-line: #d3e0d4;
+}
+
+html[data-tema="konsumen"] body {
+  background:
+    radial-gradient(ellipse at 0 35%, #e3eee4, transparent 32%),
+    radial-gradient(ellipse at 100% 65%, #e7f1df, transparent 36%),
+    var(--home-paper);
+}
+
+html[data-tema="konsumen"] :focus-visible {
+  outline-color: #3d6b56;
+}
+
+html[data-tema="konsumen"] .makna-header[data-solid="true"] {
+  color: #1c332c;
+  background: #f6faf4f5;
+  box-shadow: 0 1px 15px #1c332c16;
+}
+
+html[data-tema="konsumen"] .silk-button {
+  background: linear-gradient(110deg, #f4f8ef, #c5dcc0);
+  color: #1c332c;
+  box-shadow: 0 5px 24px #1c332c1a;
+}
+
+html[data-tema="konsumen"] .silk-button:hover {
+  background: #f7fbf4;
+}
+
+html[data-tema="konsumen"] .makna-header[data-solid="true"] .account-avatar:hover,
+html[data-tema="konsumen"] .makna-header[data-solid="true"] .account-avatar[aria-expanded="true"],
+html[data-tema="konsumen"] .account-popover a:hover,
+html[data-tema="konsumen"] .account-popover button:hover,
+html[data-tema="konsumen"] .account-popover a:focus-visible,
+html[data-tema="konsumen"] .account-popover button:focus-visible,
+html[data-tema="konsumen"] .dashboard-nav a:hover,
+html[data-tema="konsumen"] .dashboard-nav a[aria-current="page"] {
+  background: #e3efe4;
+}
+
+html[data-tema="konsumen"] .dashboard-nav > p {
+  color: #6d8a62;
+}
+
+html[data-tema="konsumen"] .dashboard-nav a,
+html[data-tema="konsumen"] .dashboard-panel a,
+html[data-tema="konsumen"] .dashboard-panel h1,
+html[data-tema="konsumen"] .dashboard-points h2,
+html[data-tema="konsumen"] .dashboard-groups h2,
+html[data-tema="konsumen"] .dashboard-groups h3,
+html[data-tema="konsumen"] .dashboard-account dd {
+  color: #1c332c;
+}
+
+html[data-tema="konsumen"] .dashboard-panel,
+html[data-tema="konsumen"] .promo-banner-controls button {
+  background: #f7faf4;
+  border-color: #d3e0d4;
+}
+
+html[data-tema="konsumen"] .dashboard-points li,
+html[data-tema="konsumen"] .dashboard-groups > li {
+  background: #f3f7f1;
+  border-color: #d3e0d4;
+}
+
+html[data-tema="konsumen"] .promo-banner-tabs button[aria-selected="true"] span {
+  background: #2f6a4e;
+}
+
+html[data-tema="konsumen"] .promo-banner-track a::after {
+  background: linear-gradient(90deg, #163028e8 0%, #1630288c 46%, #1630281a 100%);
+}
+
+html[data-tema="konsumen"] .promo-kicker {
+  color: #d7e6c8;
+}
+
+html[data-tema="konsumen"] .promo-kicker::after {
+  background: #9cba8a;
+}
+
+html[data-tema="konsumen"] .site-footer {
+  background:
+    radial-gradient(ellipse at 100% 0%, #c9ddc455, transparent 46%),
+    linear-gradient(165deg, #2c4a3e, #17261f 62%);
+}
+
+html[data-tema="konsumen"] .site-footer-invite .eyebrow,
+html[data-tema="konsumen"] .site-footer-label {
+  color: #d7e6c8;
+}
+
+html[data-tema="konsumen"] .site-footer-invite .eyebrow::after {
+  background: #9cba8a;
+}
+
+@media (max-width: 640px) {
+  html[data-tema="konsumen"] .promo-banner-track a::after {
+    background: linear-gradient(180deg, #16302838 0%, #163028c4 46%, #163028f0 100%);
+  }
+}

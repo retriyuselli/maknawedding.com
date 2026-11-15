@@ -1,0 +1,48 @@
+/* Import after Tailwind in app/globals.css. Set font variables in app/layout.tsx. */
+@theme {
+  --color-ivory: #f7f5ee;
+  --color-lilac: #d9c8f0;
+  --color-luminous: #5b6cff;
+  --color-sage: #a8bfa3;
+  --color-rose: #d8a79a;
+  --color-ink: #2e2544;
+  --color-muted: #625970;
+  --color-brand: #685b87;
+  --color-brand-hover: #52446e;
+  --color-control-border: #82758f;
+  --color-paper: #ffffff;
+  --color-error: #9c304b;
+  --color-success: #365a43;
+  --radius-card: 1.5rem;
+  --radius-feature: 1.75rem;
+  --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --font-display: var(--font-playfair, Georgia), serif;
+  --font-sans: var(--font-jakarta, system-ui), sans-serif;
+}
+
+:root {
+  --layout-max: 90rem;
+  --layout-gutter: clamp(1rem, 4vw, 4rem);
+  --section-space: clamp(4rem, 8vw, 8rem);
+  --type-display: clamp(2.75rem, 7vw, 6rem);
+  --type-heading: clamp(2rem, 4vw, 3.75rem);
+  --type-subheading: clamp(1.375rem, 2.5vw, 2rem);
+  --type-body: clamp(1rem, 1.2vw, 1.125rem);
+  --motion-interaction: 180ms;
+  --motion-reveal: 650ms;
+  --motion-hero: 950ms;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-luminous);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

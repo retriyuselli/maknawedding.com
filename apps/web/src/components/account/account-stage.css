@@ -1,0 +1,132 @@
+.account-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 36rem);
+  align-items: stretch;
+  min-height: 100svh;
+  background: #24182f;
+}
+
+.account-stage-photo {
+  position: relative;
+  align-self: start;
+  isolation: isolate;
+  width: 100%;
+  min-width: 0;
+  height: 100svh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.account-stage-photo img {
+  object-fit: cover;
+  object-position: var(--stage-focus, center 30%);
+  transform-origin: center center;
+  animation: stage-still 12s ease-in-out infinite alternate;
+}
+
+@keyframes stage-still {
+  from { transform: scale(1.14) translate3d(-2.4%, -1.4%, 0); }
+  to { transform: scale(1.24) translate3d(2.4%, 1.8%, 0); }
+}
+
+.account-stage-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, #21162ccc 0%, transparent 32%, transparent 52%, #21162ce8 100%);
+}
+
+.account-stage-photo .floating-silk {
+  z-index: 1;
+  height: 42%;
+}
+
+.account-stage-copy {
+  position: absolute;
+  z-index: 2;
+  right: clamp(1rem, 4vw, 3rem);
+  bottom: clamp(1.25rem, 4vh, 2.75rem);
+  left: clamp(1rem, 4vw, 3rem);
+  max-width: 24rem;
+  margin: 0;
+  color: #fffaf9;
+}
+
+.account-stage-copy .eyebrow {
+  color: #e7d3b0;
+}
+
+.account-stage-copy .eyebrow::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 1px;
+  margin-top: .85rem;
+  background: #c4a276;
+}
+
+.account-stage-line {
+  max-width: 14ch;
+  margin: .85rem 0 0;
+  overflow-wrap: break-word;
+  font: italic 400 clamp(1.7rem, 3vw, 2.6rem)/1.12 var(--font-display);
+  letter-spacing: -.03em;
+}
+
+.account-stage-note {
+  max-width: 32ch;
+  margin: .85rem 0 0;
+  color: #f6eef8d6;
+  font: 400 .9rem/1.55 inherit;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+.account-stage-form {
+  display: flex;
+  align-items: safe center;
+  min-width: 0;
+  padding: calc(6.5rem + env(safe-area-inset-top)) clamp(1rem, 3vw, 2.25rem) calc(2rem + env(safe-area-inset-bottom));
+  background:
+    radial-gradient(ellipse at 100% 0%, #d8bad955, transparent 48%),
+    #302142;
+}
+
+.account-stage-form .account-panel {
+  width: min(100%, 32rem);
+  margin-inline: auto;
+}
+
+@media (max-width: 860px) {
+  .account-stage {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .account-stage-photo {
+    position: relative;
+    height: auto;
+    min-height: clamp(16rem, 48vh, 24rem);
+  }
+
+  .account-stage-form {
+    align-items: stretch;
+    padding-top: 1.25rem;
+  }
+
+  .account-stage-form .account-panel {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .account-stage-photo img,
+  .account-stage-copy,
+  .account-stage-form .account-panel {
+    animation: none;
+  }
+}

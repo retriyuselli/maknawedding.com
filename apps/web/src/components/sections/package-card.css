@@ -1,0 +1,34 @@
+a.package-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.package-card:hover {
+  border-color: #bf986d;
+}
+
+a.package-card:focus-visible {
+  outline: 2px solid #61466e;
+  outline-offset: 3px;
+}
+
+.package-card-cue {
+  display: inline-flex;
+  align-items: center;
+  margin-top: auto;
+  min-height: 44px;
+  padding-top: .35rem;
+  color: #61466e;
+  font-size: .84rem;
+  font-weight: 650;
+}
+
+a.package-card:hover .package-card-cue {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}

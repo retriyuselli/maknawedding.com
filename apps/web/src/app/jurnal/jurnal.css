@@ -1,0 +1,28 @@
+.jurnal-board .eyebrow::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 1px;
+  margin-top: .85rem;
+  background: #c4a276;
+}
+
+.jurnal-board h2 {
+  margin-top: 1rem;
+}
+
+.jurnal-board .journal-card {
+  min-width: 0;
+}
+
+.jurnal-board .journal-card h3,
+.jurnal-board .journal-card p {
+  overflow-wrap: break-word;
+}
+
+.jurnal-board .journal-card p {
+  color: var(--home-muted);
+  font-size: .86rem;
+  line-height: 1.62;
+  margin: .65rem 0 0;
+}

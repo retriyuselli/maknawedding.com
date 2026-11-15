@@ -1,0 +1,13 @@
+.service-includes {
+  margin-top: .85rem;
+  color: var(--home-muted);
+  font-size: .84rem;
+  line-height: 1.5;
+  list-style: none;
+}
+
+.service-includes li {
+  padding-block: .35rem;
+  border-top: 1px solid var(--home-line);
+  overflow-wrap: break-word;
+}

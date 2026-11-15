@@ -1,0 +1,123 @@
+.account-menu {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.account-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  cursor: pointer;
+}
+
+.account-avatar:hover,
+.account-avatar[aria-expanded="true"] {
+  background: #ffffff2e;
+}
+
+.makna-header[data-solid="true"] .account-avatar:hover,
+.makna-header[data-solid="true"] .account-avatar[aria-expanded="true"] {
+  background: #efe4f2;
+}
+
+.account-popover {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + .45rem);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(18rem, calc(100vw - 1.5rem));
+  max-height: min(70vh, 32rem);
+  overflow: hidden;
+  padding: .85rem;
+  border: 1px solid var(--home-line);
+  border-radius: 1.1rem;
+  background: #fffaf9;
+  color: var(--home-plum);
+  box-shadow: 0 16px 40px #2c193624;
+  text-align: left;
+}
+
+.account-popover-name {
+  margin: 0;
+  overflow-wrap: break-word;
+  font-weight: 700;
+}
+
+.account-popover-role {
+  margin: .15rem 0 .55rem;
+  color: var(--home-muted);
+  font-size: .78rem;
+}
+
+.account-popover ul {
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-style: none;
+}
+
+.account-popover a,
+.account-popover button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  padding: .35rem .55rem;
+  border: 0;
+  border-radius: .7rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: .9rem;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.account-popover a:hover,
+.account-popover button:hover,
+.account-popover a:focus-visible,
+.account-popover button:focus-visible {
+  background: #efe4f2;
+}
+
+.account-popover button {
+  margin-top: .35rem;
+  border-top: 1px solid var(--home-line);
+  border-radius: 0 0 .7rem .7rem;
+  font-weight: 700;
+}
+
+@media (max-width: 980px) {
+  .account-popover {
+    position: fixed;
+    top: calc(4.75rem + env(safe-area-inset-top));
+    right: max(.75rem, env(safe-area-inset-right));
+    left: auto;
+    width: min(18rem, calc(100vw - 1.5rem));
+  }
+}
+
+.account-menu .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
