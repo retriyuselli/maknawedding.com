@@ -32,3 +32,13 @@ export function titleCase(value: string) {
       return `${prefix}${letter.toLocaleUpperCase("id-ID")}`;
     });
 }
+
+/** Sembunyikan tahun di judul tampilan, mis. "… 70 Pax 2026-2027" → "… 70 Pax". */
+export function displayProductName(value: string) {
+  return value
+    .replace(/\s+20\d{2}(?:\s*[-–/]\s*20\d{2})?(?:\s*[-–]\s+\S+)?\s*$/g, "")
+    .replace(/\s+20\d{2}(?:\s*[-–/]\s*20\d{2})?\b/g, "")
+    .replace(/\s{2,}/g, " ")
+    .replace(/\s*[-–]\s*$/g, "")
+    .trim();
+}

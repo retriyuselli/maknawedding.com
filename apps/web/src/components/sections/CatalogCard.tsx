@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { paxLabel, rupiah, type CatalogProduct } from "@/lib/catalog-format";
+import { displayProductName, paxLabel, rupiah, type CatalogProduct } from "@/lib/catalog-format";
 
 export function CatalogCard({ item }: { item: CatalogProduct }) {
   return (
@@ -11,7 +11,7 @@ export function CatalogCard({ item }: { item: CatalogProduct }) {
         <span className="catalog-tag">{item.category}</span>
       </div>
       <div className="catalog-body">
-        <h3>{item.name}</h3>
+        <h3>{displayProductName(item.name)}</h3>
         {item.price ? <p className="catalog-price">{rupiah(item.price)}</p> : null}
         {item.pax || item.paxAkad ? (
           <p className="catalog-pax">

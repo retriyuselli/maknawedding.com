@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { paxLabel, rupiah, titleCase } from "@/lib/catalog-format";
+import { displayProductName, paxLabel, rupiah, titleCase } from "@/lib/catalog-format";
 import { financeCatalog, financeProduct } from "@/lib/finance-catalog";
 import "./produk-detail.css";
 
@@ -13,9 +13,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const { product } = await financeProduct(slug);
   if (!product) return { title: "Produk | Makna Wedding & Event Planner" };
+  const name = displayProductName(product.name);
   return {
-    title: `${product.name} | Produk Makna`,
-    description: product.description ?? `${product.name} dari pilihan paket Makna Wedding.`,
+    title: `${name} | Produk Makna`,
+    description: product.description ?? `${name} dari pilihan paket Makna Wedding.`,
   };
 }
 
@@ -52,14 +53,15 @@ export default async function ProdukDetailPage({ params }: PageProps) {
     key: string,
   ) => {
     const hasDetails = facility.details.length > 0;
+    const heading = titleCase(displayProductName(facility.name));
     const lines = hasDetails ? facility.details : [facility.name];
 
     return (
       <li key={key} className={hasDetails ? undefined : "produk-facility-solo"}>
-        {hasDetails ? <h3>{titleCase(facility.name)}</h3> : null}
+        {hasDetails ? <h3>{heading}</h3> : null}
         <ul className="produk-facility-details">
           {lines.map((line) => (
-            <li key={line}>{titleCase(line)}</li>
+            <li key={line}>{titleCase(displayProductName(line))}</li>
           ))}
         </ul>
       </li>
@@ -82,12 +84,12 @@ export default async function ProdukDetailPage({ params }: PageProps) {
                   <ol>
                     <li><Link href="/">Beranda</Link></li>
                     <li><Link href="/produk">Produk</Link></li>
-                    <li aria-current="page"><span>{product.name}</span></li>
+                    <li aria-current="page"><span>{displayProductName(product.name)}</span></li>
                   </ol>
                 </nav>
 
                 <p className="eyebrow">{product.category}</p>
-                <h1 id="judul-produk-detail">{product.name}</h1>
+                <h1 id="judul-produk-detail">{displayProductName(product.name)}</h1>
 
                 <div className="produk-hero-meta">
                   {product.price ? (
@@ -152,7 +154,7 @@ export default async function ProdukDetailPage({ params }: PageProps) {
                             {item.image ? <img src={item.image} alt="" /> : null}
                           </span>
                           <span className="produk-related-copy">
-                            <span className="produk-related-name">{item.name}</span>
+                            <span className="produk-related-name">{displayProductName(item.name)}</span>
                             {item.price ? <span className="produk-related-price">{rupiah(item.price)}</span> : null}
                             <span className="produk-related-cue">Lihat paket <span aria-hidden>→</span></span>
                           </span>
